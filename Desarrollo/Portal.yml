@@ -1,0 +1,13 @@
+- hosts: all
+  remote_user: awx
+  #sudo: yes
+  #sudo_user: awx
+  #become: true
+  connection: ssh
+  gather_facts: no
+  tasks:
+  - name: Instalar telnet
+    action: yum name=telnet state=absent
+    #action: ping
+    #become: yes
+    #become_method: sudo
