@@ -10,6 +10,7 @@
   tasks:
   - name: Instalar telnet
     become: true
+    become_method: sudo 
     action: yum name=telnet state=present
     #action: ping
     #icome: yes
