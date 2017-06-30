@@ -9,7 +9,7 @@
   gather_facts: no
   tasks:
   - name: Instalar telnet
-    become:true
+    become: true
     action: yum name=telnet state=present
     #action: ping
     #icome: yes
