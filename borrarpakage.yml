@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+   - name: 1.Quitar apache
+     yum: name=httpd state=absent
+   - name: 2. Quitar python
+     yum: name=php-mysql state=absent
+   - name: 3.Desistalar MariaDB
+     yum: name=mariadb state absent
