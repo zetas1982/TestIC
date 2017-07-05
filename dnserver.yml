@@ -1,0 +1,9 @@
+---
+ - hosts: all
+   roles:
+    - dns
+   vars:
+     nameservers:
+      - 192.168.90.25
+
+     resolver_nameservers: "{{ nameservers | predictable_shuffle(ansible_fqdn) | list }}"
