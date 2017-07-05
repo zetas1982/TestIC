@@ -10,7 +10,7 @@
   gather_facts: no
   tasks:
   - name: Instalar telnet
-    action: yum name=telnet state=absent
+    command: date
     #action: ping
     #become: yes
     #become_method: sudo
