@@ -6,4 +6,4 @@
    - name: 2. Quitar python
      yum: name=php-mysql state=absent
    - name: 3.Desistalar MariaDB
-     yum: name=mariadb state absent
+     yum: name=mariadb state=absent
