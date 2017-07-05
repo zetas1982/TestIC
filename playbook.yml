@@ -1,5 +1,5 @@
 ---
-- hosts: databases
+- hosts: all
   roles:
         - database
         - webserver
