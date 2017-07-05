@@ -9,7 +9,7 @@
   connection: ssh
   gather_facts: no
   tasks:
-  - name: Instalar telnet
+  - name: Consultar fecha
     command: date
     #action: ping
     #become: yes
