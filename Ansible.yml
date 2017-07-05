@@ -2,12 +2,12 @@
 --- # My primer YAML Playbook for ansible
 
 - hosts: all
-  remote_user: awx
+  #remote_user: awx
   #sudo: yes
   #sudo_user: awx
-  become: true
-  connection: ssh
-  gather_facts: no
+  #become: true
+  #connection: ssh
+  gather_facts: yes
   tasks:
   - name: Consultar fecha
     command: date
