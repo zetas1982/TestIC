@@ -1,0 +1,29 @@
+---
+
+
+  - name: "Añadimos repositorio Para {{ansible_distribution}} -- {{ansible_distribution_major_version}}"
+    file:
+      src: /tss_admin/yum/rh7.repo
+      dest: /etc/yum.repos.d/rh7.repo
+      state: link
+#    command: ln -s /tss_admin/yum/rh7.repo /etc/yum.repos.d
+    when:
+      - ansible_distribution == "RedHat"
+      - ansible_distribution_major_version == "7"
+
+  - name: "Añadimos repositorio Para {{ansible_distribution}} -- {{ansible_distribution_major_version}}"
+    file:
+      src: /tss_admin/yum/rh6.repo
+      dest: /etc/yum.repos.d/rh6.repo
+      state: link
+    when:
+      - ansible_distribution == "RedHat"
+      - ansible_distribution_major_version == "6"
+
+  - name: " Repositorio para docker"
+#    command: ln -s /tss_admin/yum/docker.repo /etc/yum.repos.d
+    file:
+      src: /tss_admin/yum/docker.repo
+      dest: /etc/yum.repos.d/docker.repo
+      state: link
+

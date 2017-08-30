@@ -1,0 +1,9 @@
+---
+vars_prompt:
+  - name: target_host
+    prompt: please enter the target host IP
+    private: no
+
+
+- name: "Mostramos la ip"
+  shell: " {{ target_host }}"

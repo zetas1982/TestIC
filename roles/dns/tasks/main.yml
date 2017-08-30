@@ -1,3 +1,6 @@
 ---
+- name: Configuración Resolv.Conf
+  template: 
+       src=dns.j2
+       dest=/etc/resolv.conf
 
-- include: "configure-{{ ansible_os_family }}.yml"

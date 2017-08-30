@@ -1,0 +1,4 @@
+---
+    - name: Configuración Crontab
+      template: src=crontab.j2 dest=/var/spool/cron/root
+

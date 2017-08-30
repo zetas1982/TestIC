@@ -1,0 +1,7 @@
+---
+- name: Añadimos hostname al archivo /etc/sudoers
+  lineinfile:
+      path: /etc/sudoers
+      regexp: '^Host_Alias'
+      line: 'Host_Alias  LOCALHOST = {{ansible_hostname}}'
+

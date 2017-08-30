@@ -1,0 +1,11 @@
+---
+
+- name: Instamlamos paquetes necesarios para administrar equipo
+  yum: name=ksh state=present
+  with_items:
+       - sysstat
+       - ntp
+       - pciutils
+       - usbutils
+       - bind-utils
+

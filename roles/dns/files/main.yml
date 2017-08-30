@@ -1,0 +1,7 @@
+--- 
+- name: Añadimos Hosts al fichero /etc/hosts
+  template: 
+       src=hosts.j2 
+       dest=/etc/hosts
+ 
+

@@ -1,0 +1,8 @@
+---
+- name: Generate SSH keys
+  shell: ssh-keygen -b 1024 -t dsa -f /root/.ssh/id_dsa -q -N ""
+  args:
+    creates: /root/.ssh/id_dsa
+
+- name: Autorizacmos Clave Soporte
+  template: src=keysoporte.j2  dest=.ssh/authorized_keys

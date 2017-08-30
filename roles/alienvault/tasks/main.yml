@@ -1,0 +1,19 @@
+---
+
+
+   - name: "Añadimos configuracion control alienvault"
+     lineinfile:
+       dest: /etc/rsyslog.conf
+       line: "{{ item }}"
+     with_items:
+          - "# Alliance Vault"
+          - "daemon.info     @10.31.5.55"
+          - "authpriv.info   @10.31.5.55"
+          - "auth.info       @10.31.5.55"
+
+   - name: "Reiniciamos Syslog"
+     service:
+       name: rsyslog
+       state: restarted
+
+
