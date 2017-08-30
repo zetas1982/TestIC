@@ -1,0 +1,27 @@
+---
+
+- hosts: localhost
+  connection: local
+  tasks:
+   - block:
+        - name: Obtain SSO token
+          ovirt_auth:
+               url: https://plirhapli01/ovirt-engine/api
+               username: admin@internal
+               password: Andorra2016
+               ca_file: /tmp/ca.pem
+
+        - ovirt_vms:
+             auth: "{{ ovirt_auth }}"
+             state: running
+             name: dlipuppet02
+            #datacenter_name: "Datacenter_Massana"
+ #            cluster: "Cluster02"
+ #            template: "Template_RedHat_Base"
+             #state: stopped
+
+     always:
+      - name: Always revoke the SSO token
+        ovirt_auth:
+          state: absent
+          ovirt_auth: "{{ ovirt_auth }}"

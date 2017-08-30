@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+#  tasks:
+#    - name: "Cambiamos sudo"
+#      shell: sudo /tss_admin/rcmd/suu
+#    - name: "Comprobar servicio docker"
+#      service: name=docker state=started enabled=yes
+# service: name=docker state=started 
+  roles: 
+    - docker

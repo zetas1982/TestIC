@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+
+  tasks: 
+       - name: esto es una prueba
+         shell: echo prueba

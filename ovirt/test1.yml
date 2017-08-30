@@ -1,0 +1,8 @@
+---
+
+ovirt:
+    instance_name: testansible
+    state: stopped
+    user: admin@internal
+    password: secret
+    url: https://plirhapli01/ovirt-engine/api

@@ -1,0 +1,12 @@
+---
+
+- hosts: localhost
+  vars_prompt:
+           - name: "namevm "
+             prompt: "Nombre maquina virtual"
+             private: no
+           - name: "id "
+             prompt: "ID snapshot a borrar"
+             private: no
+           - name: ver nombre maquina
+             shell: echo la maquina es "{{ namevm }}"

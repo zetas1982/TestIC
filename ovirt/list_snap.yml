@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+
+  tasks:
+   - name: "listamos snapshots"
+     command: python  /etc/ansible/ovirt/script/list_snapshots.py
+     register: listado
+   - debug: msg="{{listado.stdout}}"
+  #---
+

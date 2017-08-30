@@ -1,0 +1,53 @@
+---
+
+- name: " 1. Actualizamos repositorio de docker."
+  copy: src=docker.repo dest=/etc/yum.repos.d/docker1.repo
+
+- name: " 2. Actualizamos repositorio"
+  shell: yum clean all
+
+- name: " 3. Copiar paquete container-se_linux"
+  copy: src=container-selinux-2.19-2.1.el7.noarch.rpm dest=/tmp/ dest=/tmp/container-selinux-2.19-2.1.el7.noarch.rpm
+
+- name: " 4. Paramos docker"
+  service: name=docker state=stopped
+
+- name: " 5. Desistalamos paquetes antiguos de Docker"
+  yum: name={{item}} state=removed
+  with_items: 
+   - docker-common
+   - docker-selinux
+   - docker-engine
+   - docker-ce
+   - docker-engine-selinux
+
+- name: " 6. Instalar paquete containet-selinux "
+  command: rpm -ivh /tmp/container-selinux-2.19-2.1.el7.noarch.rpm
+
+
+- name: " 7. Install nueva versión de Docker"
+  yum: name='docker-ce' state=present
+
+- name: " 8. Configuramos certificados de Docker"
+  file: path=/opt/certs state=directory
+  
+#- name: " 8.1 Copiamos Certificados en carpetas Docker"
+#  copy: src={{item}} dest=/opt/certs
+#  with_items:
+#   - registry.crt
+#   - registry.key
+#   - ca.pem
+#- name: " 7. Registramos docker para conexion con repo central"
+#  copy: src=registry.crt dest=/etc/pki/ca-trust/source/anchors/registry.crt
+
+#- name: " 7.1 Registramos docker para conexion repo central"
+#  copy: src=ca.pem dest=/etc/pki/ca-trust/source/anchors/
+ 
+#- name: " 8. Actualizar certificados"
+#  shell: update-ca-trust 
+
+- name: " 9. Arrancar docker"
+  service: name=docker state=restarted
+
+- name: "10. Borrar archivo no usados"
+  file: path='/etc/yum.repos.d/docker1.repo' state=absent

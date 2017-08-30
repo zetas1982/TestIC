@@ -1,0 +1,14 @@
+---
+- hosts: hosts
+  become: true
+  #gather_facts: yes
+  roles: 
+    - hosts
+    #- dns
+    #- sudoers
+    #- crontab 
+    #- keyssh
+    #- repo
+    - paquetes
+    #- crontab
+    #- alienvault

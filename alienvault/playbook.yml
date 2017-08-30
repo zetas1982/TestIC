@@ -1,0 +1,35 @@
+---
+- hosts: prod
+  user: soporte
+  become: true
+  tasks:
+   - name: "Delete antigua entrada"
+     lineinfile: 
+        dest: /etc/rsyslog.conf
+        regexp: "{{ item.regexp }}"
+        state: absent
+                   
+     with_items:
+      - { regexp: '^auth.notice' }
+      - { regexp: '^daemon.info' }
+      - { regexp: '^auth.info' }
+      - { regexp: '^mail.warning' }
+      - { regexp: '^# Envision' }
+        
+
+   - name: "Añadimos configuracion buena"
+     lineinfile:
+       dest: /etc/rsyslog.conf
+       line: "{{ item }}"
+     with_items:
+          - "# Alliance Vault"
+          - "daemon.info     @10.31.5.55"
+          - "authpriv.info   @10.31.5.55"
+          - "auth.info       @10.31.5.55"
+
+   - name: "Reiniciamos Syslog"
+     service:
+       name: rsyslog
+       state: restarted
+
+       

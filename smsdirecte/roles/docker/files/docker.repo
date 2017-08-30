@@ -1,0 +1,8 @@
+[dockerrepo]
+name=Docker Repository
+baseurl=https://download.docker.com/linux/centos/7/x86_64/stable/
+#baseurl=https://download.docker.com/linux/centos/docker-ce.repo
+proxy = https://proxy.inf.sta:8081
+enabled=1
+gpgcheck=0
+gpgkey=https://yum.dockerproject.org/gpg

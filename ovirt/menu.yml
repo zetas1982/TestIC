@@ -1,0 +1,28 @@
+---
+
+- hosts: localhost
+
+  #vars: 
+  #   from: "camelot"
+
+# vars_prompt:
+#   - name: "my_password2"
+#     prompt: "Enter password2"
+#     private: yes
+    #  encrypt: "md5_crypt"
+#     confirm: yes
+#     salt_size: 7
+#     salt: "foo"
+
+
+
+# tasks:
+#    - name: look we crypted a password
+#      shell: echo my password is {{my_password2}}
+
+
+
+  tasks:
+     - name: " LOS SNAPSHOT DISPONIBLES SON:"
+       command: python  /etc/ansible/ovirt/script/list_snapshots_list.py
+
